@@ -1,4 +1,33 @@
+import { useContext } from "react";
+import { CartContext } from "./context/CartContext";
+
 const CardPizza = ({ name, price, ingredients, img }) => {
+  const { cart, setCart } = useContext(CartContext);
+
+   const addToCart = () => {
+    const pizzaEncontrada = cart.find((pizza) => pizza.name === name);
+
+    if (pizzaEncontrada) {
+      const nuevoCart = cart.map((pizza) =>
+        pizza.name === name
+          ? { ...pizza, count: pizza.count + 1 }
+          : pizza
+      );
+
+      setCart(nuevoCart);
+    } else {
+      const nuevaPizza = {
+        name,
+        price,
+        ingredients,
+        img,
+        count: 1,
+      };
+
+      setCart([...cart, nuevaPizza]);
+    }
+  };
+
   return (
     <article className="card-pizza">
       <img
@@ -19,7 +48,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
         <p className="ingredients-title">Ingredientes:</p>
 
         <ul className="ingredients-list">
-          {ingredients.map((ingredient, index) => (
+          {ingredients?.map((ingredient, index) => (
             <li key={index}>🍕 {ingredient}</li>
           ))}
         </ul>
@@ -30,7 +59,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
 
         <div className="card-buttons">
           <button>Ver más 👀</button>
-          <button className="btn-add">Añadir 🛒</button>
+          <button className="btn-add" onClick={addToCart}>Añadir 🛒</button>
         </div>
       </div>
     </article>
