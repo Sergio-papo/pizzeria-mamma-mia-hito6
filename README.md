@@ -54,3 +54,19 @@ Consideraciones
 El backend debe estar corriendo en localhost:5000 para que el frontend funcione correctamente
 En caso de fallo de imágenes externas, se utiliza una imagen de respaldo local  (si bien lo correcto hubiese sido una imágen por tipo de pizza, dejé una sola para todos los casos)
 
+HITO 6: Manejo de estado global con Context API
+
+En este hito se implementa la gestión del carrito de compras utilizando Context API de React, permitiendo compartir el estado global entre distintos componentes de la aplicación.
+
+🔹 Funcionalidades implementadas
+Creación de CartContext para manejar el estado global del carrito
+Uso de useContext en los siguientes componentes:
+Navbar
+CardPizza
+Cart
+
+Implementación de funciones:
+➕ Agregar productos al carrito
+➕ Incrementar cantidad
+➖ Disminuir cantidad
+ Eliminar productos cuando su cantidad llega a 0
