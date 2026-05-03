@@ -5,8 +5,8 @@ const Cart = () => {
   const { cart, setCart } = useContext(CartContext)
 
   const increase = (name) => {
-    setCart(
-      cart.map((pizza) =>
+    setCart((prevCart) =>
+      prevCart.map((pizza) =>
         pizza.name === name
           ? { ...pizza, count: pizza.count + 1 }
           : pizza
@@ -15,8 +15,8 @@ const Cart = () => {
   }
 
   const decrease = (name) => {
-    setCart(
-      cart
+    setCart((prevCart) =>
+      prevCart
         .map((pizza) =>
           pizza.name === name
             ? { ...pizza, count: pizza.count - 1 }

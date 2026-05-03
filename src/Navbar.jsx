@@ -8,7 +8,8 @@ function Navbar() {
   // const total = 25000;
   const { cart } = useContext(CartContext);
 
-  const total = cart.reduce(acc, item) => acc + item.price * item.count, 0
+  const total = cart.reduce(
+    (acc, item) => acc + item.price * item.count, 0
 );
 
   return (
